@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalos</title>
-</head>
-
-<body>
-    <h1>Información sobre la factura</h1>
+<x-template titulo="Mostrar regalo">
+    <h1>Información sobre el regalo</h1>
     <table>
         <tr>
             <th>
@@ -43,8 +33,5 @@
                 </form>
             </td>
         </tr>
-
     </table>
-</body>
-
-</html>
+</x-template>

@@ -16,14 +16,6 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoice = Invoice::all();
-        //Para recuperar el nombre del provedor
-        if ($invoice) {
-            $i = 0;
-            foreach ($invoice as $single) {
-                $invoice[$i]->supplier = Supplier::where('id', $single->id_supplier)->value('name');
-                $i += 1;
-            }
-        }
         return view('invoices.invoiceIndex', compact('invoice'));
     }
 
@@ -53,8 +45,8 @@ class InvoiceController extends Controller
             'price' => 'required',
 
         ]);
-        $id_supplier = Supplier::where('name', $request->name)->value('id');
-        $request->request->add(compact('id_supplier'));
+        $supplier_id = Supplier::where('name', $request->name)->value('id');
+        $request->request->add(compact('supplier_id'));
         Invoice::create($request->all());
         return redirect('/invoice');
     }

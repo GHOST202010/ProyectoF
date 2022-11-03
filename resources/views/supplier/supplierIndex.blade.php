@@ -1,42 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-template titulo="Listado de provedores">
+    <div class="container">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <div class="container-fluid">
+                <a href="" class="navbar-brand ms-5">Inicio</a>
+            </div>
+            <div class="container-fluid">
+                <a href="" class="navbar-brand ms-5">Gym</a>
+            </div>
+            <div class="container-fluid">
+                <a href="" class="navbar-brand ms-5">prueba</a>
+            </div>
+        </nav>
+    </div>
+    <div class="row justify-content-center my-2">
+        <div class="col-auto">
+            <table class="table table-hover table-dark w-auto">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Frecuencia</th>
+                    <th>Teléfono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de proveedores</title>
-</head>
+                @foreach ($suppliers as $provedor)
+                <tr>
+                    <td>{{$provedor->name}}</td>
+                    <td>{{$provedor->periodicity}}</td>
+                    <td>{{$provedor->telephone}}</td>
+                    <td><a href="/supplier/{{$provedor->id}}/edit" class="btn btn-info">Editar</a></td>
+                    <td>
+                        <form action="/supplier/{{$provedor->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
 
-<body>
-    <h1>Listado de proveedores</h1>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Frecuencia</th>
-            <th>Teléfono</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </tr>
-
-        @foreach ($suppliers as $provedor)
-        <tr>
-            <td>{{$provedor->name}}</td>
-            <td>{{$provedor->periodicity}}</td>
-            <td>{{$provedor->telephone}}</td>
-            <td><a href="/supplier/{{$provedor->id}}/edit">Editar</a></td>
-            <td>
-                <form action="/supplier/{{$provedor->id}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Eliminar">
-                </form>
-            </td>
-        </tr>
-
-        @endforeach
-    </table>
-
-</body>
-
-</html>
+                @endforeach
+            </table>
+        </div>
+</x-template>

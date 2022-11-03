@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-
-<body>
+<x-template titulo="Crear provedores">
     <h1>Creacion de provedores</h1>
     <form action="/supplier" method="post">
         @csrf
@@ -20,6 +10,4 @@
         <input type="text" name="telephone" id="">
         <input type="submit" value="Guardar">
     </form>
-</body>
-
-</html>
+</x-template>

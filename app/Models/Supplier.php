@@ -10,4 +10,9 @@ class Supplier extends Model
     use HasFactory;
     protected $fillable = ['name', 'periodicity', 'telephone'];
     public $timestamps = false;
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

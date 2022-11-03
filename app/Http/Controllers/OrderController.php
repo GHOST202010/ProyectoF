@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -44,7 +45,8 @@ class OrderController extends Controller
             'money_up_front' => 'required',
             'delivery' => 'required',
         ]);
-        Order::create($request->all());
+        $order = Order::create($request->all());
+        $order->users()->attach(Auth::id());
         return redirect('/order');
     }
 

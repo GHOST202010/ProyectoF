@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de pedidos</title>
-</head>
-
-<body>
+<x-template titulo="Listado de pedidos">
     <h1>Pedidos</h1>
 
     <table>
@@ -40,9 +30,16 @@
                 </form>
             </td>
         </tr>
-
         @endforeach
     </table>
-</body>
-
-</html>
+    <table>
+        <tr>
+            <th>Nombre del cliente</th>
+        </tr>
+        @foreach ($order[5]->users as $single)
+        <tr>
+            <td>{{$single->name}}</td>
+        </tr>
+        @endforeach
+    </table>
+</x-template>

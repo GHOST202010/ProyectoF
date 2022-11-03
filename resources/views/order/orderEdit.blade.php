@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-
-<body>
-    <h1>Creacion de pedidos</h1>
+<x-template titulo="Editar pedido">
+    <h1>Edición de pedidos</h1>
     <form action="/order/{{$order->id}}" method="post">
         @csrf
         @method('patch')
@@ -33,6 +23,4 @@
         <br>
         <input type="submit" value="Guardar">
     </form>
-</body>
-
-</html>
+</x-template>

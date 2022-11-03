@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar</title>
-</head>
-
-<body>
+<x-template titulo="Mostrar pedido">
     <h1>Información de los pedidos</h1>
     <h2>{{$order}}</h2>
-</body>
-
-</html>
+</x-template>

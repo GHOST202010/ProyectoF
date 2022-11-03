@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-
-<body>
+<x-template titulo="Crear pedido">
     <h1>Creacion de pedidos</h1>
     <form action="/order" method="post">
         @csrf
@@ -32,6 +22,4 @@
         <br>
         <input type="submit" value="Guardar">
     </form>
-</body>
-
-</html>
+</x-template>
