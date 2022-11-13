@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Template extends Component
+class Navbar extends Component
 {
     public $titulo;
     /**
@@ -12,8 +12,6 @@ class Template extends Component
      *
      * @return void
      */
-
-
     public function __construct($titulo)
     {
         $this->titulo = $titulo;
@@ -26,6 +24,6 @@ class Template extends Component
      */
     public function render()
     {
-        return view('components.template');
+        return view('components.navbar');
     }
 }
