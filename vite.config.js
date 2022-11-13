@@ -8,8 +8,10 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/css/bootstrap.css',
+                'resources/js/bootstrap.bundle.js',
                 'resources/css/materialize.css',
                 'resources/js/materialize.js',
+                
             ],
             refresh: [
                 ...refreshPaths,

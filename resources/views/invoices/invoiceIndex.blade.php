@@ -1,7 +1,7 @@
 <x-template titulo="Listado de facturas">
     <h1>Facturas</h1>
 
-    <table>
+    <x-table>
         <tr>
             <th>Estatus</th>
             <th>Costo</th>
@@ -11,14 +11,13 @@
         </tr>
 
         @foreach ($invoice as $single)
-        <tr>
-            <td>{{$single->status}}</td>
-            <td>{{$single->price}}</td>
-            <td>{{$single->date}}</td>
-            <td>{{$single->supplier->name}}</td>
-            <td><a href="/invoice/{{$single->id}}">Revisar</a></td>
-        </tr>
-
+            <tr>
+                <td>{{ $single->status }}</td>
+                <td>{{ $single->price }}</td>
+                <td>{{ $single->date }}</td>
+                <td>{{ $single->supplier->name }}</td>
+                <td><a href="/invoice/{{ $single->id }}">Revisar</a></td>
+            </tr>
         @endforeach
-    </table>
+    </x-table>
 </x-template>
