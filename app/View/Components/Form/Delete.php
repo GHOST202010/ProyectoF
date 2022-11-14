@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Link;
+namespace App\View\Components\Form;
 
 use Illuminate\View\Component;
 
-class Editar extends Component
+class Delete extends Component
 {
     public $url;
     /**
@@ -24,6 +24,6 @@ class Editar extends Component
      */
     public function render()
     {
-        return view('components.link.editar');
+        return view('components.form.delete');
     }
 }

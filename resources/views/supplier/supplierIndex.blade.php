@@ -1,12 +1,11 @@
-<x-template titulo="Provedores">
+<x-template titulo="Proveedores">
+    <h1 class="text-center">Lista de los proveedores</h1>
     <x-table>
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Frecuencia</th>
-                <th>Teléfono</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Más información</th>
             </tr>
         </thead>
         <tbody>
@@ -14,11 +13,9 @@
                 <tr>
                     <td>{{ $provedor->name }}</td>
                     <td>{{ $provedor->periodicity }}</td>
-                    <td>{{ $provedor->telephone }}</td>
-                    <td><a href="/supplier/{{ $provedor->id }}/edit" class="btn btn-info">Editar</a></td>
                     <td>
-                        <x-form.eliminar url="/supplier/{{ $provedor->id }}">
-                        </x-form.eliminar>
+                        <x-link.show url="/supplier/{{ $provedor->id }}">
+                        </x-link.show>
                     </td>
                 </tr>
             @endforeach
