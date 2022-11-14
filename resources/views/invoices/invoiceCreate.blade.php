@@ -5,6 +5,10 @@
         <div class="form-group">
             <label for="supplier_id">Nombre del provedor:</label>
             <select name="supplier_id" class="form-select">
+                @if ($supplier->isEmpty())
+                    <option value="">Ingrese proveedores primero</option>
+                @endif
+
                 @foreach ($supplier as $single)
                     <option value="{{ $single->id }}">
                         {{ $single->name }}</option>

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Gift extends Model
 {
     use HasFactory;
-    protected $fillable = ['price', 'amount', 'type', 'id_user'];
+    protected $fillable = ['price', 'amount', 'type', 'user_id'];
     public $timestamps = false;
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gift;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GiftController extends Controller
 {
@@ -45,8 +46,8 @@ class GiftController extends Controller
 
         //Agregar codigo para tomar id del usuario actual, de
         // momento se pone uno por defecto
-        $id_user = 1;
-        $request->request->add(compact('id_user'));
+        $user_id = Auth::id();
+        $request->request->add(compact('user_id'));
         //ahora si se agregará el registro
         Gift::create($request->all());
         return redirect('/gift');

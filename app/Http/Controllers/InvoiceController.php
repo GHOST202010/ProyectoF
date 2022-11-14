@@ -27,6 +27,7 @@ class InvoiceController extends Controller
     public function create()
     {
         $supplier = Supplier::all();
+        // $supplier = [];
         return view('invoices.invoiceCreate', compact('supplier'));
     }
 

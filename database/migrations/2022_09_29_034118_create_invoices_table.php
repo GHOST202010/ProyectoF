@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->integer('price');
             $table->date('date');
-            $table->foreignId('supplier_id')->constrained();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

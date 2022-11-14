@@ -18,8 +18,7 @@ return new class extends Migration
             $table->integer('amount')->unsigned();
             $table->integer('price')->unsigned();
             $table->string('type');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
         });
     }
 
