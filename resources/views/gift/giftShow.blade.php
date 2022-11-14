@@ -1,6 +1,6 @@
 <x-template titulo="Mostrar regalo">
-    <h1>Información sobre el regalo</h1>
-    <table>
+    <h1 class="text-center">Información sobre el regalo</h1>
+    <x-table>
         <tr>
             <th>
                 Regalo
@@ -16,22 +16,20 @@
         </tr>
         <tr>
             <td>
-                {{$gift->type}}
+                {{ $gift->type }}
             </td>
             <td>
-                {{$gift->price}}
+                ${{ $gift->price }}
             </td>
             <td>
-                {{$gift->amount}}
+                {{ $gift->amount }}
             </td>
-            <td><a href="/gift/{{$gift->id}}/edit">Editar</a></td>
             <td>
-                <form action="/gift/{{$gift->id}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Eliminar">
-                </form>
+                <x-link.edit url="/gift/{{ $gift->id }}/edit">Editar</x-link.edit>
+            </td>
+            <td>
+                <x-form.delete url="/gift/{{ $gift->id }}"></x-form.delete>
             </td>
         </tr>
-    </table>
+    </x-table>
 </x-template>

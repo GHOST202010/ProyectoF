@@ -13,7 +13,7 @@
             <tr>
                 <td>{{ $single->customer_name }}</td>
                 <td>{{ $single->description }}</td>
-                <td>{{ $single->cost }}</td>
+                <td>${{ $single->cost }}</td>
                 <td>{{ $single->delivery }}</td>
                 <td>
                     <x-link.show url="/order/{{ $single->id }}"></x-link.show>

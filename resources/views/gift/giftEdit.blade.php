@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Regalos</title>
-</head>
-
-<body>
-    <form action="/gift/{{$gift->id}}" method="post">
+<x-template titulo="Editar regalo">
+    <h1 class="text-center">Edición de regalos</h1>
+    <form action="/gift/{{ $gift->id }}" method="post" class="container">
         @csrf
         @method('PATCH')
-        <label for="amount">Cantidad:</label>
-        <input type="number" name="amount" id="" value="{{old('amount') ?? $gift->amount}}" placeholder="Cantidad">
-        <br>
-        <label for="price">Precio del regalo:</label>
-        <input type="number" name="price" id="" value="{{old('price') ?? $gift->price}}" placeholder="Cantidad de dinero">
-        <br>
-        <label for="type">Tipo de regalo:</label>
-        <input type="text" name="type" id="" value="{{old('type') ?? $gift->type}}" placeholder="(Oso de peluche, gorra, etc.)">
-        <br>
-        <input type="submit" value="Guardar">
+        <div class="form-group">
+            <label for="amount" class="form-label">Cantidad:</label>
+            <input type="number" name="amount" class="form-control" value="{{ old('amount') ?? $gift->amount }}"
+                placeholder="Cantidad">
+        </div>
+        <div class="form-group">
+            <label for="price" class="form-label">Precio del regalo:</label>
+            <input type="number" name="price" class="form-control" value="{{ old('price') ?? $gift->price }}"
+                placeholder="Cantidad de dinero">
+        </div>
+        <div class="form-group">
+            <label for="type" class="form-label">Tipo de regalo:</label>
+            <input type="text" name="type" class="form-control" value="{{ old('type') ?? $gift->type }}"
+                placeholder="(Oso de peluche, gorra, etc.)">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-1 justify-content-center">Guardar</button>
+        </div>
     </form>
-</body>
-
-</html>
+</x-template>

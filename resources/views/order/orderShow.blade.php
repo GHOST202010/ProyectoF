@@ -15,7 +15,7 @@
             <td>{{ $order->customer_name }}</td>
             <td>{{ $order->telephone }}</td>
             <td>{{ $order->description }}</td>
-            <td>{{ $order->cost }}</td>
+            <td>${{ $order->cost }}</td>
             <td>{{ $order->money_up_front }}</td>
             <td>{{ $order->delivery }}</td>
             <td>

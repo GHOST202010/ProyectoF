@@ -1,15 +1,24 @@
 <x-template titulo="Crear regalos">
-    <form action="/gift" method="post">
+    <h1 class="text-center">Creación de regalos</h1>
+    <form action="/gift" method="post" class="container">
         @csrf
-        <label for="amount">Cantidad:</label>
-        <input type="number" name="amount" id="" value="{{old('amount') ?? ''}}" placeholder="Cantidad">
-        <br>
-        <label for="price">Precio del regalo:</label>
-        <input type="number" name="price" id="" value="{{old('price') ?? ''}}" placeholder="Cantidad de dinero">
-        <br>
-        <label for="type">Tipo de regalo:</label>
-        <input type="text" name="type" id="" value="{{old('type') ?? ''}}" placeholder="(Oso de peluche, gorra, etc.)">
-        <br>
-        <input type="submit" value="Guardar">
+        <div class="form-group">
+            <label for="amount" class="form-label">Cantidad:</label>
+            <input type="number" name="amount" class="form-control" value="{{ old('amount') ?? '' }}"
+                placeholder="Cantidad">
+        </div>
+        <div class="form-group">
+            <label for="price" class="form-label">Precio del regalo:</label>
+            <input type="number" name="price" class="form-control" value="{{ old('price') ?? '' }}"
+                placeholder="Cantidad de dinero">
+        </div>
+        <div class="form-group">
+            <label for="type" class="form-label">Tipo de regalo:</label>
+            <input type="text" name="type" class="form-control" value="{{ old('type') ?? '' }}"
+                placeholder="(Oso de peluche, gorra, etc.)">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-1 justify-content-center">Guardar</button>
+        </div>
     </form>
 </x-template>

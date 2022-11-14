@@ -1,28 +1,32 @@
 <x-template titulo="Crear facturas">
-    <form action="/invoice" method="post">
+    <h1 class="text-center">Creación de facturas</h1>
+    <form action="/invoice" method="post" class="container">
         @csrf
-        <label for="name">Nombre del provedor:</label>
-        <select name="name" id="">
-
-            <option value="{{old('name') ?? ''}}" selected>{{old('name') ?? '-'}}</option>
-            @foreach ($supplier as $single)
-            @if((old('name') && old('name')!=$single->name) || (!old('name')))
-            <option value="{{$single->name}}">{{$single->name}}</option>
-            @else
-
-            @endif
-            @endforeach
-        </select>
-        <br>
-        <label for="status">Estado de la factura:</label>
-        <input type="text" name="status" id="" value="{{old('status') ?? ''}}" placeholder="Pagado, no pagado">
-        <br>
-        <label for="price">Total a pagar:</label>
-        <input type="number" name="price" id="" value="{{old('price') ?? ''}}" placeholder="Cantidad de dinero">
-        <br>
-        <label for="date">Fecha de la factura:</label>
-        <input type="date" name="date" id="" value="{{old('date') ?? ''}}">
-        <br>
-        <input type="submit" value="Guardar">
+        <div class="form-group">
+            <label for="supplier_id">Nombre del provedor:</label>
+            <select name="supplier_id" class="form-select">
+                @foreach ($supplier as $single)
+                    <option value="{{ $single->id }}">
+                        {{ $single->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status" class="form-label">Estado de la factura:</label>
+            <input type="text" name="status" class="form-control" value="{{ old('status') ?? '' }}"
+                placeholder="Pagado, no pagado">
+        </div>
+        <div class="form-group">
+            <label for="price" class="form-label">Total a pagar:</label>
+            <input type="number" name="price" class="form-control" value="{{ old('price') ?? '' }}"
+                placeholder="Cantidad de dinero">
+        </div>
+        <div class="form-group">
+            <label for="date" class="form-label">Fecha de la factura:</label>
+            <input type="date" name="date" class="form-control"" value="{{ old('date') ?? '' }}">
+        </div>
+        <div class="text-center" class="form-label">
+            <button type="submit" class="btn btn-primary mt-1 justify-content-center">Guardar</button>
+        </div>
     </form>
 </x-template>

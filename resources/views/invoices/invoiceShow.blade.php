@@ -1,9 +1,9 @@
 <x-template titulo="Mostrar factura">
-    <h1>Información sobre la factura</h1>
-    <table>
+    <h1 class="text-center">Información sobre la factura</h1>
+    <x-table>
         <tr>
             <th>
-                Nombre del provedor
+                Nombre del proveedor
             </th>
             <th>
                 Precio del pedido
@@ -19,26 +19,23 @@
         </tr>
         <tr>
             <td>
-                {{$invoice->supplier}}
+                {{ $invoice->supplier->name }}
             </td>
             <td>
-                {{$invoice->price}}
+                ${{ $invoice->price }}
             </td>
             <td>
-                {{$invoice->date}}
+                {{ $invoice->date }}
             </td>
             <td>
-                {{$invoice->status}}
+                {{ $invoice->status }}
             </td>
-            <td><a href="/gift/{{$single->id}}/edit">Editar</a></td>
             <td>
-                <form action="/gift/{{$single->id}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Eliminar">
-                </form>
+                <x-link.edit url="/invoice/{{ $invoice->id }}/edit"></x-link.edit>
+            </td>
+            <td>
+                <x-form.delete url="/invoice/{{ $invoice->id }}"></x-form.delete>
             </td>
         </tr>
-
-    </table>
+    </x-table>
 </x-template>

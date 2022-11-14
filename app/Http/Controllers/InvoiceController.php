@@ -39,14 +39,12 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'supplier_id' => 'required',
             'status' => 'required',
             'date' => 'required',
             'price' => 'required',
 
         ]);
-        $supplier_id = Supplier::where('name', $request->name)->value('id');
-        $request->request->add(compact('supplier_id'));
         Invoice::create($request->all());
         return redirect('/invoice');
     }
@@ -59,7 +57,6 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        $invoice->supplier = Supplier::where('id', $invoice->id_supplier)->value('name');
         return view('invoices.invoiceShow', compact('invoice'));
     }
 
@@ -71,8 +68,7 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        $supplier = Supplier::select('name')->get();
-        $invoice->supplier = Supplier::where('id', $invoice->id_supplier)->value('name');
+        $supplier = Supplier::all();
         return view('invoices.invoiceEdit', compact('invoice', 'supplier'));
     }
 
@@ -86,14 +82,13 @@ class InvoiceController extends Controller
     public function update(Request $request, Invoice $invoice)
     {
         $request->validate([
-            'name' => 'required',
+            'supplier_id' => 'required',
             'status' => 'required',
             'date' => 'required',
             'price' => 'required',
 
         ]);
-        $id_supplier = Supplier::where('name', $request->name)->value('id');
-        $request->request->add(compact('id_supplier'));
+
         Invoice::where('id', $invoice->id)->update($request->except('_token', '_method', 'name'));
         return redirect('/invoice');
     }
