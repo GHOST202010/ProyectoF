@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +47,7 @@ class OrderController extends Controller
             'description' => 'required|string',
             'cost' => 'required|numeric',
             'money_up_front' => 'required|numeric|lte:cost',
-            'delivery' => 'required|date',
+            'delivery' => ['date_format:Y-m-d\TH:i', 'required', 'date'],
         ]);
         $order = Order::create($request->all());
         $order->users()->attach(Auth::id());
@@ -87,7 +91,7 @@ class OrderController extends Controller
             'description' => 'required|string',
             'cost' => 'required|numeric',
             'money_up_front' => 'required|numeric|lte:cost',
-            'delivery' => 'required|date',
+            'delivery' => ['date_format:Y-m-d\TH:i', 'required', 'date'],
         ]);
         Order::where('id', $order->id)->update($request->except('_token', '_method'));
         return redirect('/order');

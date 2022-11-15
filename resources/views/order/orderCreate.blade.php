@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="description">Descripción del pedido:</label>
-            <textarea name="description" class="form-control">{{ old('customer_name') ?? '' }}</textarea>
+            <textarea name="description" class="form-control">{{ old('description') ?? '' }}</textarea>
             @error('description')
                 <strong>{{ $message }}</strong>
             @enderror
