@@ -27,7 +27,6 @@ class InvoiceController extends Controller
     public function create()
     {
         $supplier = Supplier::all();
-        // $supplier = [];
         return view('invoices.invoiceCreate', compact('supplier'));
     }
 
@@ -40,10 +39,10 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'supplier_id' => 'required',
-            'status' => 'required',
-            'date' => 'required',
-            'price' => 'required',
+            'supplier_id' => 'required|integer',
+            'status' => 'required|string',
+            'date' => 'required|date',
+            'price' => 'required|integer',
 
         ]);
         Invoice::create($request->all());
@@ -83,10 +82,10 @@ class InvoiceController extends Controller
     public function update(Request $request, Invoice $invoice)
     {
         $request->validate([
-            'supplier_id' => 'required',
-            'status' => 'required',
-            'date' => 'required',
-            'price' => 'required',
+            'supplier_id' => 'required|integer',
+            'status' => 'required|string',
+            'date' => 'required|date',
+            'price' => 'required|integer',
 
         ]);
 

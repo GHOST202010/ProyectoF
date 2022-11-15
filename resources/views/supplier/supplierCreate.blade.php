@@ -6,15 +6,24 @@
         <div class="form-group">
             <label for="name">Nombre:</label>
             <input type="text" name="name" class="form-control" value="{{ old('name') ?? '' }}">
+            @error('name')
+                <strong>{{ $message }}</strong>
+            @enderror
         </div>
         <div class="form-group">
             <label for="periodicity">Periodicidad:</label>
             <input type="text" name="periodicity" class="form-control" value="{{ old('periodicity') ?? '' }}">
+            @error('periodicity')
+                <strong>{{ $message }}</strong>
+            @enderror
         </div>
         <div class="form-group">
             <label for="telephone">Telefono:</label>
             <input type="text" name="telephone" class="form-control" value="{{ old('telephone') ?? '' }}"
                 pattern="[0-9]{10}">
+            @error('telephone')
+                <strong>{{ $message }}</strong>
+            @enderror
             <small class="form-text text-muted">Ejemplo: 123456789</small>
         </div>
         <div class="text-center">

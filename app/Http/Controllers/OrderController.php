@@ -38,12 +38,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'telephone' => 'required',
-            'customer_name' => 'required',
-            'description' => 'required',
-            'cost' => 'required',
-            'money_up_front' => 'required',
-            'delivery' => 'required',
+            'telephone' => 'required|digits:10',
+            'customer_name' => 'required|string',
+            'description' => 'required|string',
+            'cost' => 'required|numeric',
+            'money_up_front' => 'required|numeric|lte:cost',
+            'delivery' => 'required|date',
         ]);
         $order = Order::create($request->all());
         $order->users()->attach(Auth::id());
@@ -81,6 +81,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $request->validate([
+            'telephone' => 'required|digits:10',
+            'customer_name' => 'required|string',
+            'description' => 'required|string',
+            'cost' => 'required|numeric',
+            'money_up_front' => 'required|numeric|lte:cost',
+            'delivery' => 'required|date',
+        ]);
         Order::where('id', $order->id)->update($request->except('_token', '_method'));
         return redirect('/order');
     }

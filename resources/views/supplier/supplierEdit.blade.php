@@ -8,16 +8,25 @@
                 <label for="name" class="form-label">Nombre:</label>
                 <input type="text" name="name" class="form-control" id=""
                     value="{{ old('name') ?? $supplier->name }}">
+                @error('name')
+                    <strong>{{ $message }}</strong>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="periodicity" class="form-label">Periodicidad:</label>
                 <input type="text" name="periodicity" class="form-control" id=""
                     value="{{ old('periodicity') ?? $supplier->periodicity }}">
+                @error('periodicity')
+                    <strong>{{ $message }}</strong>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="telephone" class="form-label">Telefono:</label>
                 <input type="text" name="telephone" class="form-control" id=""
                     value="{{ old('telephone') ?? $supplier->telephone }}">
+                @error('telephone')
+                    <strong>{{ $message }}</strong>
+                @enderror
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary mt-1 justify-content-center">Guardar</button>

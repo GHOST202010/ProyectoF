@@ -38,9 +38,9 @@ class GiftController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'amount' => 'required',
-            'type' => 'required',
-            'price' => 'required',
+            'amount' => 'required|numeric',
+            'type' => 'required|string',
+            'price' => 'required|numeric',
 
         ]);
 
@@ -84,6 +84,13 @@ class GiftController extends Controller
      */
     public function update(Request $request, Gift $gift)
     {
+        $request->validate([
+            'amount' => 'required|numeric',
+            'type' => 'required|string',
+            'price' => 'required|numeric',
+
+        ]);
+
         Gift::where('id', $gift->id)->update($request->except('_token', '_method'));
         return redirect('/gift');
     }

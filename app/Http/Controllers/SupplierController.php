@@ -41,9 +41,9 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'periodicity' => 'required',
-            'telephone' => 'required',
+            'name' => 'required|string',
+            'periodicity' => 'required|string',
+            'telephone' => 'required|digits:10|integer',
         ]);
         Supplier::create($request->all());
 
@@ -81,6 +81,11 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'periodicity' => 'required|string',
+            'telephone' => 'required|digits:10|integer',
+        ]);
         $supplier::where('id', $supplier->id)->update($request->except('_token', '_method'));
         return redirect('/supplier');
     }
